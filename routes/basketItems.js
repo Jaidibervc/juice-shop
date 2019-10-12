@@ -5,7 +5,7 @@ const models = require('../models/index')
 
 module.exports.addBasketItem = function addBasketItem () {
   return (req, res, next) => {
-    var result = utils.parseJsonCustom(req.rawBody)
+    var result = utils.parseJsonCustom1(req.rawBody)
     var productIds = []
     var basketIds = []
     var quantities = []

@@ -1,0 +1,37 @@
+User Credentials - Database Schema
+routes/search.js -> lineas: 4, 9-13  
+--> https://sequelize.org/master/manual/raw-queries.html
+
+NoSQL Exfiltration
+routes/trackOrders.js ->  lineas 11-13
+
+Classic Stored XSS
+
+Reflected XSS
+frontend/src/app/track-order -> 
+--> https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
+
+DOM XSS
+frontend/src/app/navbar -> 
+--> https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
+
+XXE Data Access
+--> https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html
+
+SSRF
+
+Manipulate Basket -- no estoy seguro de la solución
+lib/utils.js -> metodo export.parseJsonCustom a export.parseJsonCustom1
+routes/basketItems.js -> linea 8 
+
+Forged Feedback
+- ¿No mostrar la linea que posee el id para ser cambiado?
+
+CAPTCHA Bypass
+
+Whitelist Bypass
+
+Forged Signed JWT
+- ¿No exponer la ruta de entrada a esa carptera?
+
+Unsigned JWT

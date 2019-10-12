@@ -1,12 +1,17 @@
 const utils = require('../lib/utils')
 const models = require('../models/index')
 const challenges = require('../data/datacache').challenges
-
+//re = /[.*+?^${}()|[\]\\]/g, '\\$&';
 module.exports = function searchProducts () {
   return ({ query }, res, next) => {
     let criteria = query.q === 'undefined' ? '' : query.q || ''
     criteria = (criteria.length <= 200) ? criteria : criteria.substring(0, 200)
-    models.sequelize.query('SELECT * FROM Products WHERE ((name LIKE \'%' + criteria + '%\' OR description LIKE \'%' + criteria + '%\') AND deletedAt IS NULL) ORDER BY name')
+    /*if(re.test(criteria)){//si hay un caracter especial, returna error
+      return error
+    }*/
+    //models.sequelize.query('SELECT * FROM Products WHERE ((name LIKE \'%' + criteria + '%\' OR description LIKE \'%' + criteria + '%\') AND deletedAt IS NULL) ORDER BY name')
+    models.sequelize.query('SELECT * FROM Products WHERE ((name LIKE :criter OR description LIKE :criter) AND deletedAt IS NULL) ORDER BY name',
+    { replacements: { criter: '%'+criteria+'%'}})
       .then(([products, query]) => {
         const dataString = JSON.stringify(products)
         if (utils.notSolved(challenges.unionSqlInjectionChallenge)) {
